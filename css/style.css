@@ -12,6 +12,7 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  font-size: clamp(16px, 1.2vw, 36px);
 }
 
 .container {
@@ -87,4 +88,18 @@ body {
 }
 .band.even .tracks-list-wrapper {
   grid-area: 3/2/5/3;
+}
+
+@media screen and (min-width: 1920px) {
+  .band {
+    padding: 40px;
+    grid-template-rows: 240px 200px 240px 120px;
+  }
+  .band :is(.img-wrapper,
+  .title-wrapper,
+  .soloist-name-wrapper,
+  .participants-except-soloists-wrapper,
+  .tracks-list-wrapper) {
+    padding: 20px;
+  }
 }/*# sourceMappingURL=style.css.map */
