@@ -30,9 +30,12 @@ data.forEach((band, index) => {
 	})
 
 	bandDiv.innerHTML = `
-		<div class="img-wrapper">
-			<img src="${band.icon}" alt="${band.bandName} Icon" />
-		</div>
+	<div class="img-wrapper" style="${
+		band.icon != null && band.icon !== ''
+			? `background-image: url('${band.icon}');`
+			: `background-image: url('https://placehold.co/600x400?text=No%20Image');`
+	}"></div>
+
 
 		<div class="title-wrapper">
 			<h2>${band.bandName}</h2>
