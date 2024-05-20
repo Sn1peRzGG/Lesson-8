@@ -1,0 +1,71 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 80%;
+  padding: 20px;
+  background: #f00;
+}
+
+.band {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 120px 100px 120px 60px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.band .img-wrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.band li {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+.band li::marker {
+  content: "► ";
+}
+
+.band.odd .img-wrapper {
+  grid-area: 1/2/4/3;
+}
+.band.odd .title-wrapper {
+  grid-area: 4/2/5/3;
+}
+.band.odd .soloist-name-wrapper {
+  grid-area: 1/1/2/2;
+}
+.band.odd .participants-except-soloists-wrapper {
+  grid-area: 2/1/3/2;
+}
+.band.odd .tracks-list-wrapper {
+  grid-area: 3/1/5/2;
+}
+
+.band.even .img-wrapper {
+  grid-area: 1/1/4/2;
+}
+.band.even .title-wrapper {
+  grid-area: 4/1/5/2;
+}
+.band.even .soloist-name-wrapper {
+  grid-area: 1/2/2/3;
+}
+.band.even .participants-except-soloists-wrapper {
+  grid-area: 2/2/3/3;
+}
+.band.even .tracks-list-wrapper {
+  grid-area: 3/2/5/3;
+}/*# sourceMappingURL=style.css.map */
