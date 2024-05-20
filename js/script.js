@@ -15,9 +15,8 @@ data.forEach((band, index) => {
 	}
 
 	const participantsWithoutSoloist = band.participants.filter(
-		participant => participant !== band.soloist
+		participant => participant !== band.soloist && participant.trim() !== ''
 	)
-	participantsExceptSoloists.push(...participantsWithoutSoloist)
 
 	let tracksList = ''
 	band.tracks.forEach(track => {
@@ -44,7 +43,13 @@ data.forEach((band, index) => {
 		<div class="soloist-name-wrapper"><h2>${band.soloist}</h2></div>
 
 		<div class="participants-except-soloists-wrapper">
-			<p>${participantsWithoutSoloist.join(', ')}</p>
+			<p>
+			${
+				participantsWithoutSoloist.length > 0
+					? participantsWithoutSoloist.join(', ')
+					: 'No other participants'
+			}
+			</p>	
 		</div>
 
 		<div class="tracks-list-wrapper">
