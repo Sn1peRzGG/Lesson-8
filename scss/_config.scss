@@ -1,2 +1,21 @@
 $primary-color: #a5a5a5;
 $accent-color: #005c53;
+$night-color: #1c1c3c;
+$day-color: white;
+$transition-time: 0.3s;
+
+body {
+	transition: background-color $transition-time, color $transition-time;
+	color: $primary-color;
+	background-color: $secondary-color;
+
+	&.light {
+		$primary-color: $night-color;
+		$secondary-color: $day-color;
+	}
+
+	&.dark {
+		$primary-color: $day-color;
+		$secondary-color: $night-color;
+	}
+}

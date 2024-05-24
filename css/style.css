@@ -1,5 +1,87 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+body {
+  transition: background-color 0.5s, color 0.5s;
+  color: #a5a5a5;
+}
+body.light {
+  color: #1c1c3c;
+  background-color: white;
+}
+body.light .container {
+  background-color: white;
+}
+body.dark {
+  color: white;
+  background-color: #1c1c3c;
+}
+body.dark .container {
+  background-color: #1c1c3c;
+}
+
+.switch {
+  position: fixed;
+  z-index: 100;
+}
+.switch .slider {
+  position: absolute;
+  height: 60px;
+  width: 120px;
+  border-radius: 30px;
+  background-color: #1c1c3c;
+  cursor: pointer;
+  transition: 0.5s;
+  z-index: 99;
+}
+.switch .slider:before {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  height: 50px;
+  width: 50px;
+  content: "";
+  border-radius: 50%;
+  background-color: white;
+  transition: 0.5s;
+}
+
+#toggle {
+  opacity: 0;
+  touch-action: none;
+}
+#toggle:checked ~ .slider {
+  background-color: white;
+}
+#toggle:checked ~ .slider:before {
+  background-color: white;
+  box-shadow: inset -20px -10px 0 0px #1c1c3c;
+  transform: translate(60px, 1px);
+}
+#toggle:checked ~ .slide-block {
+  left: 0;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.slide-block {
+  height: 100vh;
+  width: 150vw;
+  position: absolute;
+  top: 0;
+  background: radial-gradient(circle at top left, #50507f, #1c1c3c);
+  transition: 0.5s;
+}
+.slide-block.slide-out {
+  left: -150vw;
+  border-bottom-right-radius: 100%;
+  border-top-right-radius: 100%;
+}
+.slide-block.slide-in {
+  left: 0;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +100,6 @@ body {
 .container {
   width: 80%;
   padding: 20px;
-  background: #a5a5a5;
 }
 
 .band {

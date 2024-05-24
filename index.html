@@ -25,8 +25,45 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<div class="container"></div>
+		<div class="container">
+			<label class="switch" style="top: 40px; right: 135px">
+				<input id="toggle" type="checkbox" />
+				<span class="slider"></span>
+			</label>
+		</div>
 
 		<script type="module" src="./js/script.js"></script>
+		<script>
+			window.onload = function () {
+				const toggle = document.getElementById('toggle')
+
+				function applyColorScheme(scheme) {
+					document.body.classList.remove('dark', 'light')
+					document.body.classList.add(scheme)
+					toggle.checked = scheme === 'dark'
+				}
+
+				if (window.matchMedia) {
+					const darkSchemeMediaQuery = window.matchMedia(
+						'(prefers-color-scheme: dark)'
+					)
+					applyColorScheme(darkSchemeMediaQuery.matches ? 'dark' : 'light')
+
+					darkSchemeMediaQuery.addEventListener('change', function (e) {
+						applyColorScheme(e.matches ? 'dark' : 'light')
+					})
+				} else {
+					applyColorScheme('light')
+				}
+
+				toggle.addEventListener('change', function (e) {
+					if (e.target.checked) {
+						applyColorScheme('dark')
+					} else {
+						applyColorScheme('light')
+					}
+				})
+			}
+		</script>
 	</body>
 </html>
