@@ -25,8 +25,8 @@ body {
 .band {
 	display: grid;
 	grid-template-rows: 120px 100px 120px 60px;
-	grid-column-gap: 10px;
-	grid-row-gap: 10px;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
 	overflow: hidden;
 
 	.img-wrapper {
