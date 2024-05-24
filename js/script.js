@@ -4,27 +4,31 @@ let data = await response.json()
 const container = document.querySelector('.container')
 const participantsExceptSoloists = []
 
-function checkDirectionBlock(index){
+function checkDirectionBlock(index) {
 	return index % 2 === 0 ? 'even' : 'odd'
 }
 
-function getParticipantsWithoutSoloist(band){
-	return band.participants.filter(participant => participant !== band.soloist && participant.trim() !== '')
+function getParticipantsWithoutSoloist(band) {
+	return band.participants.filter(
+		participant => participant !== band.soloist && participant.trim() !== ''
+	)
 }
 
-function createTracksList(band){
+function createTracksList(band) {
 	let tracksList = ''
 
 	band.tracks.forEach(track => {
 		if (track.name && track.duration) {
-			tracksList += `<li>${track.name} - ${(track.duration - (track.duration % 60)) / 60} min ${track.duration % 60} sec</li>`
+			tracksList += `<li>${track.name} - ${
+				(track.duration - (track.duration % 60)) / 60
+			} min ${track.duration % 60} sec</li>`
 		}
 	})
 
 	return tracksList
 }
 
-function createBandDiv(band, index){
+function createBandDiv(band, index) {
 	const bandDiv = document.createElement('div')
 	bandDiv.classList.add('band')
 
@@ -35,7 +39,8 @@ function createBandDiv(band, index){
 	<div class="img-wrapper" style="${
 		band.icon != null && band.icon !== ''
 			? `background-image: url('${band.icon}');`
-			: `background-image: url('https://placehold.co/600x400?text=No%20Image');`}"></div>
+			: `background-image: url('https://placehold.co/600x400?text=No%20Image');`
+	}"></div>
 
 
 		<div class="title-wrapper">
@@ -60,7 +65,7 @@ function createBandDiv(band, index){
 			</ul>
 		</div>`
 
-		return bandDiv;
+	return bandDiv
 }
 
 data.forEach((band, index) => {
