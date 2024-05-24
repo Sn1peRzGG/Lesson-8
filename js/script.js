@@ -4,36 +4,38 @@ let data = await response.json()
 const container = document.querySelector('.container')
 const participantsExceptSoloists = []
 
-data.forEach((band, index) => {
+function checkDirectionBlock(index){
+	return index % 2 === 0 ? 'even' : 'odd'
+}
+
+function getParticipantsWithoutSoloist(band){
+	return band.participants.filter(participant => participant !== band.soloist && participant.trim() !== '')
+}
+
+function createTracksList(band){
+	let tracksList = ''
+
+	band.tracks.forEach(track => {
+		if (track.name && track.duration) {
+			tracksList += `<li>${track.name} - ${(track.duration - (track.duration % 60)) / 60} min ${track.duration % 60} sec</li>`
+		}
+	})
+
+	return tracksList
+}
+
+function createBandDiv(band, index){
 	const bandDiv = document.createElement('div')
 	bandDiv.classList.add('band')
 
-	if (index % 2 === 0) {
-		bandDiv.classList.add('even')
-	} else {
-		bandDiv.classList.add('odd')
-	}
-
-	const participantsWithoutSoloist = band.participants.filter(
-		participant => participant !== band.soloist && participant.trim() !== ''
-	)
-
-	let tracksList = ''
-	band.tracks.forEach(track => {
-		if (track.name && track.duration) {
-			const minutes = (track.duration - (track.duration % 60)) / 60
-			const seconds = track.duration % 60
-			tracksList += `<li>${track.name} - ${minutes} min ${seconds} sec</li>`
-		} else {
-		}
-	})
+	bandDiv.classList.add(checkDirectionBlock(index))
+	let participantsWithoutSoloist = getParticipantsWithoutSoloist(band)
 
 	bandDiv.innerHTML = `
 	<div class="img-wrapper" style="${
 		band.icon != null && band.icon !== ''
 			? `background-image: url('${band.icon}');`
-			: `background-image: url('https://placehold.co/600x400?text=No%20Image');`
-	}"></div>
+			: `background-image: url('https://placehold.co/600x400?text=No%20Image');`}"></div>
 
 
 		<div class="title-wrapper">
@@ -54,9 +56,13 @@ data.forEach((band, index) => {
 
 		<div class="tracks-list-wrapper">
 			<ul class="tracks-list">
-				${tracksList}
+				${createTracksList(band)}
 			</ul>
 		</div>`
 
-	container.appendChild(bandDiv)
+		return bandDiv;
+}
+
+data.forEach((band, index) => {
+	container.appendChild(createBandDiv(band, index))
 })
