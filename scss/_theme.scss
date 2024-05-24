@@ -37,3 +37,28 @@
 		}
 	}
 }
+
+#toggle:checked ~ .slide-block {
+	left: 0;
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.slide-block {
+	height: 100vh;
+	width: 150vw;
+	position: absolute;
+	top: 0;
+	background: radial-gradient(circle at top left, #50507f, #1c1c3c);
+	transition: 0.5s;
+}
+.slide-block.slide-out {
+	left: -150vw;
+	border-bottom-right-radius: 100%;
+	border-top-right-radius: 100%;
+}
+.slide-block.slide-in {
+	left: 0;
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
