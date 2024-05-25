@@ -1,5 +1,5 @@
 $primary-color: #a5a5a5;
-// $secondary-color: #000;
+$secondary-color: #000;
 $accent-color: #005c53;
 $night-color: #1c1c3c;
 $day-color: white;
@@ -11,12 +11,12 @@ body {
 	background-color: $secondary-color;
 
 	&.light {
-		$primary-color: $night-color;
-		$secondary-color: $day-color;
+		color: $night-color;
+		background-color: $day-color;
 	}
 
 	&.dark {
-		$primary-color: $day-color;
-		$secondary-color: $night-color;
+		color: $day-color;
+		background-color: $night-color;
 	}
 }

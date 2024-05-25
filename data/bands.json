@@ -1,54 +1,65 @@
 [
-   {
-	 "id": 2,
-	 "soloist": "Serj Tankian",
-	 "bandName": "SOAD",
-	 "icon": "https://static.posters.cz/image/750/%D0%9D%D0%B0%D0%BA%D0%BB%D0%B5%D0%B9%D0%BA%D0%B0/system-of-a-down-logo-i7795.jpg",
-	 "participants": ["Serj Tankian", "Shavo Odadjian", "Daron Vartan Malakian", "John Dolmayan"],
-	 "tracks": [
-		{
-			"name": "Lonely Day",
-			"duration": 167
-		},
-		{
-		},
-		{
-			"name": "Chop Suey!",
-			"duration": 212
-		},
-		{
-			"name": "Sugar",
-			"duration": 153
-		},
-		{
-			"name": "Toxicity",
-			"duration": 219
-		}]
-   },
-   {
-	"id": 3,
-	"soloist": "James Alan Hetfield",
-	"bandName": "Metallica",
-	"icon": "https://seeklogo.com/images/M/Metallica-logo-42A3DC5618-seeklogo.com.png",
-	"participants": ["Kirk Lee Hammett", "James Alan Hetfield", "Roberto Agustín Miguel Santiago Samuel Trujillo Veracruz", "Lars Ulrich"],
-	"tracks": [
-	   {
-		   "name": "Master of Puppets",
-		   "duration": 313
-	   },
-	   {
-		   "name": "Fuel",
-		   "duration": 270
-	   },
-	   {
-		   "name": "The Unforgiven",
-		   "duration": 386
-	   },
-	   {
-		   "name": "Nothing Else Matters",
-		   "duration": 243
-	   }]
-  	},
+	{
+		"id": 2,
+		"soloist": "Serj Tankian",
+		"bandName": "SOAD",
+		"icon": "https://static.posters.cz/image/750/%D0%9D%D0%B0%D0%BA%D0%BB%D0%B5%D0%B9%D0%BA%D0%B0/system-of-a-down-logo-i7795.jpg",
+		"participants": [
+			"Serj Tankian",
+			"Shavo Odadjian",
+			"Daron Vartan Malakian",
+			"John Dolmayan"
+		],
+		"tracks": [
+			{
+				"name": "Lonely Day",
+				"duration": 167
+			},
+			{},
+			{
+				"name": "Chop Suey!",
+				"duration": 212
+			},
+			{
+				"name": "Sugar",
+				"duration": 153
+			},
+			{
+				"name": "Toxicity",
+				"duration": 219
+			}
+		]
+	},
+	{
+		"id": 3,
+		"soloist": "James Alan Hetfield",
+		"bandName": "Metallica",
+		"icon": "https://seeklogo.com/images/M/Metallica-logo-42A3DC5618-seeklogo.com.png",
+		"participants": [
+			"Kirk Lee Hammett",
+			"James Alan Hetfield",
+			"Roberto Agustín Miguel Santiago Samuel Trujillo Veracruz",
+			"Lars Ulrich"
+		],
+		"tracks": [
+			{
+				"name": "Master of Puppets",
+				"duration": 313
+			},
+			{
+				"name": "Fuel",
+				"duration": 270
+			},
+			{
+				"name": "The Unforgiven",
+				"duration": 386
+			},
+			{
+				"name": "Nothing Else Matters",
+				"duration": 243
+			}
+		]
+	},
 	{
 		"id": 5,
 		"soloist": "2D",
@@ -56,46 +67,53 @@
 		"icon": "",
 		"participants": ["Murdoc Niccals", "2D", "Russel Hobbs", "Noodle"],
 		"tracks": [
-		  {
-		   "name": "Kids with Guns",
-		   "duration": 226
-		  },
-		  {
-		   "name": "Feel Good Inc",
-		   "duration": 222
-		  },
-		  {
-		   "name": "Clint Eastwood",
-		   "duration": 269
-		  },
-		  {
-			"name": "",
-			"duration": 0
-		   }]
+			{
+				"name": "Kids with Guns",
+				"duration": 226
+			},
+			{
+				"name": "Feel Good Inc",
+				"duration": 222
+			},
+			{
+				"name": "Clint Eastwood",
+				"duration": 269
+			},
+			{
+				"name": "",
+				"duration": 0
+			}
+		]
 	},
 	{
 		"id": 12,
 		"soloist": "Kurt Donald Cobain",
 		"bandName": "Nirvana",
 		"icon": "https://static.posters.cz/image/750/%D0%9D%D0%B0%D0%BA%D0%BB%D0%B5%D0%B9%D0%BA%D0%B0/nirvana-smiley-logo-i7802.jpg",
-		"participants": ["Kurt Donald Cobain", "Krist Anthony Novoselić", "", "David Eric Grohl"],
+		"participants": [
+			"Kurt Donald Cobain",
+			"Krist Anthony Novoselić",
+			"",
+			"David Eric Grohl"
+		],
 		"tracks": [
-		  {
-		   "name": "Smells Like Teen Spirit",
-		   "duration": 301
-		  },
-		  {
-		   "name": "Come As You Are",
-		   "duration": 228
-		  },
-		  {
-		   "name": "Heart-Shaped Box",
-		   "duration": 279
-		  },
-		  {
-			"name": "Lithium",
-			"duration": 257
-		   }]
+			{
+				"name": "Smells Like Teen Spirit",
+				"duration": 301
+			},
+			{
+				"name": "Come As You Are",
+				"duration": 228
+			},
+			{
+				"name": "Heart-Shaped Box",
+				"duration": 279
+			},
+			{
+				"name": "Lithium",
+				"duration": 257
+			}
+		]
 	},
 	{
 		"id": 23,
@@ -104,21 +122,22 @@
 		"icon": "https://seeklogo.com/images/F/frank-sinatra-logo-0D50EC75D0-seeklogo.com.png",
 		"participants": ["Francis Albert Sinatra", "", "", ""],
 		"tracks": [
-		  {
-		   "name": "Strangers in the Night",
-		   "duration": 145
-		  },
-		  {
-		   "name": "Downtown",
-		   "duration": 135
-		  },
-		  {
-		   "name": "The Girl from Ipanema",
-		   "duration": 180
-		  },
-		  {
-			"name": "Change Partners",
-			"duration": 160
-		   }]
+			{
+				"name": "Strangers in the Night",
+				"duration": 145
+			},
+			{
+				"name": "Downtown",
+				"duration": 135
+			},
+			{
+				"name": "The Girl from Ipanema",
+				"duration": 180
+			},
+			{
+				"name": "Change Partners",
+				"duration": 160
+			}
+		]
 	}
- ]
+]
