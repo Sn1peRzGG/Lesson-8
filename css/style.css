@@ -1,5 +1,24 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #a5a5a5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #8c8c8c;
+}
+
 body {
   transition: background-color 0.3s, color 0.3s;
   color: #a5a5a5;
@@ -134,7 +153,7 @@ body.dark {
 .popup .close-btn {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 11px;
   width: 15px;
   height: 15px;
   background: #888;
@@ -143,6 +162,7 @@ body.dark {
   line-height: 15px;
   border-radius: 15px;
   cursor: pointer;
+  font-size: 0.95rem;
 }
 
 .popup .form h2 {
@@ -230,11 +250,24 @@ body {
   padding: 20px;
 }
 
+#download-btn {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+  background-color: #005c53;
+  color: white;
+  padding: 10px;
+}
+
 .band {
   display: grid;
   grid-template-rows: repeat(4, minmax(0, 1fr));
   grid-template-columns: repeat(2, minmax(0, 1fr));
   overflow: hidden;
+  height: 540px;
 }
 .band:not(:first) {
   margin-top: 120px !important;
@@ -254,14 +287,22 @@ body {
 .band li::marker {
   content: "► ";
 }
+.band .tracks-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: -moz-max-content;
+  height: max-content;
+}
 .band .addSongBtn {
+  margin-top: auto;
   border: none;
-  height: 40px;
-  width: 240px;
+  padding: 10px;
   border-radius: 10px;
   font-size: 0.95em;
   background-color: #005c53;
   color: white;
+  cursor: pointer;
+  margin-top: 20px;
 }
 .band :is(.img-wrapper,
 .title-wrapper,

@@ -36,11 +36,27 @@ body {
 	padding: 20px;
 }
 
+#download-btn {
+	position: fixed;
+	top: 5px;
+	left: 5px;
+	// width: 160px;
+	// height: 50px;
+	border-radius: 15px;
+	cursor: pointer;
+	border: none;
+	background-color: $accent-color;
+	color: $day-color;
+
+	padding: 10px;
+}
+
 .band {
 	display: grid;
 	grid-template-rows: repeat(4, minmax(0, 1fr));
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	overflow: hidden;
+	height: 540px;
 
 	&:not(:first) {
 		margin-top: 120px !important;
@@ -65,14 +81,24 @@ body {
 		}
 	}
 
+	.tracks-list-wrapper {
+		display: flex;
+		flex-direction: column;
+		height: max-content;
+	}
+
 	.addSongBtn {
+		margin-top: auto;
 		border: none;
-		height: 40px;
-		width: 240px;
+		// height: 40px;
+		// width: 240px;
+		padding: 10px;
 		border-radius: 10px;
 		font-size: 0.95em;
 		background-color: $accent-color;
 		color: $day-color;
+		cursor: pointer;
+		margin-top: 20px;
 	}
 
 	:is(
