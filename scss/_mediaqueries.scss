@@ -1,5 +1,17 @@
-@media screen and (max-width: 1024px) {
-	.container {
-		width: 100%;
+@media screen and (min-width: 1024px) {
+	.band {
+		grid-template-rows: 120px 100px 120px 60px !important;
 	}
 }
+
+@media screen and (max-width: 1023px) {
+	.container {
+		width: 100% !important;
+	}
+}
+
+// @media screen and (max-width: 767px) {
+// 	.band:first {
+// 		margin-top: 100px !important;
+// 	}
+// }

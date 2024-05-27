@@ -26,10 +26,29 @@
 	</head>
 	<body>
 		<div class="container">
-			<label class="switch" style="top: 40px; right: 135px">
-				<input id="toggle" type="checkbox" />
-				<span class="slider"></span>
-			</label>
+			<button id="download-btn">Download Updated JSON</button>
+		</div>
+		<label class="switch" style="top: 40px; right: 135px">
+			<input id="toggle" type="checkbox" />
+			<span class="slider"></span>
+		</label>
+
+		<div class="popup">
+			<div class="close-btn">&times;</div>
+			<div class="form">
+				<h2>Add a new song</h2>
+				<div class="form-element">
+					<label for="song-name">Name</label>
+					<input type="text" id="song-name" placeholder="Enter song name" />
+				</div>
+				<div class="form-element">
+					<label for="song-duration">Duration (in seconds)</label>
+					<input type="text" id="song-duration" placeholder="Enter duration" />
+				</div>
+				<div class="form-element">
+					<button class="add-btn">Add</button>
+				</div>
+			</div>
 		</div>
 
 		<script type="module" src="./js/script.js"></script>
