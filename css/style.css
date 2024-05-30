@@ -25,12 +25,15 @@ body {
   background-color: #000;
 }
 body.light {
-  color: #1c1c3c;
-  background-color: white;
+  color: #1c1c3c !important;
+  background-color: white !important;
+}
+body.light .deleteSongBtn {
+  color: #1c1c3c !important;
 }
 body.dark {
-  color: white;
-  background-color: #1c1c3c;
+  color: white !important;
+  background-color: #1c1c3c !important;
 }
 
 .switch {
@@ -153,7 +156,7 @@ body.dark {
 .popup .close-btn {
   position: absolute;
   top: 10px;
-  right: 11px;
+  right: 10px;
   width: 15px;
   height: 15px;
   background: #888;
@@ -217,6 +220,39 @@ body.dark {
   font-weight: 600;
 }
 
+.search-wrapper {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 20px;
+  z-index: 150;
+}
+.search-wrapper input {
+  width: 350px;
+  padding: 15px;
+  border-radius: 15px;
+  outline: none;
+  border: 2px solid #005c53;
+  text-transform: capitalize;
+  font-family: "Questrial", sans-serif;
+}
+.search-wrapper input::-moz-placeholder {
+  color: black;
+}
+.search-wrapper input::placeholder {
+  color: black;
+}
+.search-wrapper #search-btn {
+  border: 2px solid #005c53;
+  width: 80px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.search-wrapper #search-btn:hover {
+  color: #fff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -248,18 +284,45 @@ body {
 .container {
   width: 80%;
   padding: 20px;
+  margin-top: 100px;
 }
 
-#download-btn {
+button {
+  transition: all 0.3s ease-in-out;
+}
+button:not(.deleteSongBtn):hover {
+  background-color: #00433c !important;
+}
+
+#download-btn,
+#add-band-btn {
   position: fixed;
   top: 5px;
   left: 5px;
+  width: 160px;
+  height: 50px;
   border-radius: 15px;
   cursor: pointer;
   border: none;
   background-color: #005c53;
   color: white;
   padding: 10px;
+}
+
+#add-band-btn {
+  margin-top: 60px;
+}
+
+.deleteBandBtn {
+  width: 200px;
+  height: 60px;
+  font-size: 24px;
+  font-weight: 500;
+  border: none;
+  border-radius: 15px;
+  background-color: #005c53;
+  color: white;
+  cursor: pointer;
 }
 
 .band {
@@ -292,6 +355,19 @@ body {
   flex-direction: column;
   height: -moz-max-content;
   height: max-content;
+}
+.band .tracks-list-wrapper .deleteSongBtn {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 1.25em;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  margin-left: 10px;
+  position: absolute;
+}
+.band .tracks-list-wrapper .deleteSongBtn:hover {
+  color: #ff0505 !important;
 }
 .band .addSongBtn {
   margin-top: auto;
@@ -327,6 +403,12 @@ body {
 }
 .band.odd .soloist-name-wrapper {
   grid-area: 1/1/2/2;
+  position: relative;
+}
+.band.odd .soloist-name-wrapper .deleteBandBtn {
+  top: 30px;
+  left: 0;
+  position: absolute;
 }
 .band.odd .participants-except-soloists-wrapper {
   grid-area: 2/1/3/2;
@@ -346,6 +428,12 @@ body {
 }
 .band.even .soloist-name-wrapper {
   grid-area: 1/2/2/3;
+  position: relative;
+}
+.band.even .soloist-name-wrapper .deleteBandBtn {
+  top: 30px;
+  right: 0;
+  position: absolute;
 }
 .band.even .participants-except-soloists-wrapper {
   grid-area: 2/2/3/3;

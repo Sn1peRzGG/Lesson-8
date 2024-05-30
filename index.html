@@ -25,31 +25,108 @@
 		<title>Document</title>
 	</head>
 	<body>
+		<div class="search-wrapper">
+			<input
+				type="text"
+				id="search-input"
+				placeholder="Search bands..."
+				autocomplete="off"
+			/>
+			<button id="search-btn">Search</button>
+		</div>
+
 		<div class="container"></div>
-		<button id="download-btn">Download Updated JSON</button>
 
 		<label class="switch" style="top: 40px; right: 135px">
 			<input id="toggle" type="checkbox" />
 			<span class="slider"></span>
 		</label>
 
-		<div class="popup">
-			<div class="close-btn">&times;</div>
-			<div class="form">
-				<h2>Add a new song</h2>
-				<div class="form-element">
-					<label for="song-name">Name</label>
-					<input type="text" id="song-name" placeholder="Enter song name" />
-				</div>
-				<div class="form-element">
-					<label for="song-duration">Duration (in seconds)</label>
-					<input type="text" id="song-duration" placeholder="Enter duration" />
-				</div>
-				<div class="form-element">
-					<button class="add-btn">Add</button>
+		<!-- Modal для додавання треку -->
+		<div class="popup add-track-popup">
+			<div class="popup-content">
+				<span class="close-btn">&times;</span>
+				<div class="form">
+					<h2>Add New Track</h2>
+					<div class="form-element">
+						<label for="track-name">Track Name</label>
+						<input
+							type="text"
+							id="track-name"
+							placeholder="Track Name"
+							required
+						/>
+					</div>
+					<div class="form-element">
+						<label for="track-duration">Track Duration (seconds)</label>
+						<input
+							type="text"
+							id="track-duration"
+							placeholder="Track Duration (seconds)"
+							required
+						/>
+					</div>
+					<div class="form-element">
+						<button class="add-track-btn">Add Track</button>
+					</div>
 				</div>
 			</div>
 		</div>
+
+		<!-- Modal для додавання нової групи -->
+		<div class="popup add-band-popup">
+			<div class="popup-content">
+				<span class="close-btn">&times;</span>
+				<div class="form">
+					<h2>Add New Band</h2>
+					<div class="form-element">
+						<label for="band-name">Band Name</label>
+						<input
+							type="text"
+							id="band-name"
+							placeholder="Band Name"
+							required
+						/>
+					</div>
+					<div class="form-element">
+						<label for="band-icon">Band Icon URL</label>
+						<input
+							type="text"
+							id="band-icon"
+							placeholder="Band Icon URL"
+							required
+						/>
+					</div>
+					<div class="form-element">
+						<label for="band-soloist">Soloist</label>
+						<input
+							type="text"
+							id="band-soloist"
+							placeholder="Soloist"
+							required
+						/>
+					</div>
+					<div class="form-element">
+						<label for="band-participants"
+							>Participants (comma separated)</label
+						>
+						<input
+							type="text"
+							id="band-participants"
+							placeholder="Participants (comma separated)"
+							required
+						/>
+					</div>
+					<div class="form-element">
+						<button class="add-band-btn">Add Band</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<button id="add-band-btn">Add New Band</button>
+
+		<button id="download-btn">Download JSON</button>
 
 		<script type="module" src="./js/script.js"></script>
 		<!-- <script src="./js/theme.js"></script> -->

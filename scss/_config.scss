@@ -4,6 +4,7 @@ $accent-color: #005c53;
 $night-color: #1c1c3c;
 $day-color: white;
 $transition-time: 0.3s;
+$danger: #ff0505;
 
 ::-webkit-scrollbar {
 	width: 10px;
@@ -30,12 +31,16 @@ body {
 	background-color: $secondary-color;
 
 	&.light {
-		color: $night-color;
-		background-color: $day-color;
+		color: $night-color !important;
+		background-color: $day-color !important;
+
+		.deleteSongBtn {
+			color: $night-color !important;
+		}
 	}
 
 	&.dark {
-		color: $day-color;
-		background-color: $night-color;
+		color: $day-color !important;
+		background-color: $night-color !important;
 	}
 }
