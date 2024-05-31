@@ -1,24 +1,12 @@
-document.addEventListener('DOMContentLoaded', function () {
-	async function loadBands() {
-		try {
-			let data
+import {
+	addTrackDeleteEventListeners,
+	convertTime,
+	createTracksList,
+	downloadJSON,
+	loadBands,
+} from './script.js'
 
-			// Check if data is available in localStorage
-			const storedData = localStorage.getItem('bandsData')
-			if (storedData) {
-				data = JSON.parse(storedData)
-			} else {
-				const response = await fetch('./data/bands.json')
-				data = await response.json()
-				localStorage.setItem('bandsData', JSON.stringify(data))
-			}
-
-			populateBands(data)
-		} catch (error) {
-			console.error('Error loading bands data:', error)
-		}
-	}
-
+document.addEventListener('DOMContentLoaded', async function () {
 	const container = document.querySelector('.container')
 
 	function checkDirectionBlock(index) {
@@ -29,20 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		return band.participants.filter(
 			participant => participant !== band.soloist && participant.trim() !== ''
 		)
-	}
-
-	function createTracksList(band) {
-		let tracksList = ''
-
-		band.tracks.forEach((track, index) => {
-			if (track.name && !isNaN(track.duration)) {
-				const minutes = Math.floor(track.duration / 60)
-				const seconds = track.duration % 60
-				tracksList += `<li data-track-id="${index}">${track.name} - ${minutes} min ${seconds} sec <button class='deleteSongBtn'>&times;</button></li>`
-			}
-		})
-
-		return tracksList
 	}
 
 	function createBandDiv(band, index) {
@@ -70,13 +44,13 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
 
       <div class="soloist-name-wrapper">
-				<h2>${
+        <h2>${
 					band.soloist != null && band.soloist !== ''
 						? band.soloist
 						: 'No Soloist'
 				}</h2>
-				<button class='deleteBandBtn'>Delete Band</button>
-			</div>
+        <button class='deleteBandBtn'>Delete Band</button>
+      </div>
 
       <div class="participants-except-soloists-wrapper">
         <p>${
@@ -132,11 +106,9 @@ document.addEventListener('DOMContentLoaded', function () {
 					const tracksList = bandDiv.querySelector('.tracks-list')
 					tracksList.innerHTML += `<li data-track-id="${
 						band.tracks.length - 1
-					}">${track.name} - ${
-						(track.duration - (track.duration % 60)) / 60
-					} min ${
-						track.duration % 60
-					} sec <button class='deleteSongBtn'>&times;</button></li>`
+					}">${track.name} - ${convertTime(
+						track.duration
+					)} <button class='deleteSongBtn'>&times;</button></li>`
 					addTrackDeleteEventListeners(bandDiv)
 				} else {
 					console.error(`Band with ID ${bandId} not found`)
@@ -158,44 +130,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		addTrackDeleteEventListeners(bandDiv)
 	}
 
-	function addTrackDeleteEventListeners(bandDiv) {
-		const deleteSongBtns = bandDiv.querySelectorAll('.deleteSongBtn')
-		deleteSongBtns.forEach(btn => {
-			btn.addEventListener('click', function () {
-				const trackLi = this.closest('li')
-				const trackId = parseInt(trackLi.getAttribute('data-track-id'))
-				const bandId = parseInt(bandDiv.getAttribute('data-id'))
-
-				let storedData = JSON.parse(localStorage.getItem('bandsData'))
-				const band = storedData.find(b => b.id === bandId)
-
-				if (band) {
-					band.tracks.splice(trackId, 1)
-					localStorage.setItem('bandsData', JSON.stringify(storedData))
-					trackLi.remove()
-				} else {
-					console.error(`Band with ID ${bandId} not found`)
-				}
-			})
-		})
-
-		const deleteBandBtn = bandDiv.querySelector('.deleteBandBtn')
-		deleteBandBtn.addEventListener('click', function () {
-			const bandId = bandDiv.getAttribute('data-id')
-			let storedData = JSON.parse(localStorage.getItem('bandsData'))
-			storedData = storedData.filter(b => b.id !== parseInt(bandId))
-			localStorage.setItem('bandsData', JSON.stringify(storedData))
-			bandDiv.remove()
-		})
-	}
-
 	function populateBands(data) {
 		container.innerHTML = ''
 		data.forEach((band, index) => {
 			const bandDiv = createBandDiv(band, index)
 			container.appendChild(bandDiv)
 			addEventListenersToBandDiv(bandDiv)
-			addTrackDeleteEventListeners(bandDiv)
 		})
 	}
 
@@ -265,16 +205,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		filterBands(searchTerm)
 	})
 
-	loadBands()
+	const bandsData = await loadBands()
+	populateBands(bandsData)
 })
-
-function downloadJSON(data, filename) {
-	const dataStr =
-		'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data))
-	const downloadAnchorNode = document.createElement('a')
-	downloadAnchorNode.setAttribute('href', dataStr)
-	downloadAnchorNode.setAttribute('download', filename)
-	document.body.appendChild(downloadAnchorNode) // required for firefox
-	downloadAnchorNode.click()
-	downloadAnchorNode.remove()
-}
