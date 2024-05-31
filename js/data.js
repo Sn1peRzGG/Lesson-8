@@ -89,32 +89,38 @@ document.addEventListener('DOMContentLoaded', async function () {
 					10
 				)
 
-				const track = {
-					name: trackName,
-					duration: trackDuration,
-				}
+				isNaN(trackDuration)
+					? alert('Please enter a valid number for the track duration.')
+					: (function () {
+							const track = {
+								name: trackName,
+								duration: trackDuration,
+							}
 
-				document.getElementById('track-name').value = ''
-				document.getElementById('track-duration').value = ''
+							document.getElementById('track-name').value = ''
+							document.getElementById('track-duration').value = ''
 
-				let storedData = JSON.parse(localStorage.getItem('bandsData'))
-				const band = storedData.find(b => b.id === parseInt(bandId))
+							let storedData = JSON.parse(localStorage.getItem('bandsData'))
+							const band = storedData.find(b => b.id === parseInt(bandId))
 
-				if (band) {
-					band.tracks.push(track)
-					localStorage.setItem('bandsData', JSON.stringify(storedData))
-					const tracksList = bandDiv.querySelector('.tracks-list')
-					tracksList.innerHTML += `<li data-track-id="${
-						band.tracks.length - 1
-					}">${track.name} - ${convertTime(
-						track.duration
-					)} <button class='deleteSongBtn'>&times;</button></li>`
-					addTrackDeleteEventListeners(bandDiv)
-				} else {
-					console.error(`Band with ID ${bandId} not found`)
-				}
+							if (band) {
+								band.tracks.push(track)
+								localStorage.setItem('bandsData', JSON.stringify(storedData))
+								const tracksList = bandDiv.querySelector('.tracks-list')
+								tracksList.innerHTML += `<li data-track-id="${
+									band.tracks.length - 1
+								}">${track.name} - ${convertTime(
+									track.duration
+								)} <button class='deleteSongBtn'>&times;</button></li>`
+								addTrackDeleteEventListeners(bandDiv)
+							} else {
+								console.error(`Band with ID ${bandId} not found`)
+							}
 
-				document.querySelector('.add-track-popup').classList.remove('active')
+							document
+								.querySelector('.add-track-popup')
+								.classList.remove('active')
+					  })()
 			}
 		})
 
